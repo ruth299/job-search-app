@@ -3,110 +3,69 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Melbourne JobDash - Transformation Jobs Dashboard</title>
+    <title>Melbourne JobDash - Live Tracker</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
-        <!-- Header -->
-        <header class="header">
-            <div class="header-content">
-                <div class="live-badge">● LIVE LISTINGS</div>
-                <h1 class="title">TRANSFORMATION JOBS</h1>
-                <p class="subtitle">Melbourne, Victoria — Workday, Cognizant & transformation roles dashboard</p>
-            </div>
-        </header>
-
-        <!-- Search & Filters -->
-        <div class="search-section">
-            <div class="search-container">
-                <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <circle cx="11" cy="11" r="8"></circle>
-                    <path d="m21 21-4.35-4.35"></path>
-                </svg>
-                <input 
-                    type="text" 
-                    id="searchInput" 
-                    placeholder="Search by role, company, skill..."
-                    class="search-input"
-                >
-            </div>
-            <div class="inline-filters">
-                <select id="industryFilter" class="filter-select">
-                    <option value="">All Industries</option>
-                    <option value="Finance">Finance</option>
-                    <option value="Tech">Tech</option>
-                    <option value="Consulting">Consulting</option>
-                    <option value="Healthcare">Healthcare</option>
-                    <option value="Government">Government</option>
-                    <option value="Retail">Retail</option>
-                </select>
-                <select id="salaryFilter" class="filter-select">
-                    <option value="">All Salaries</option>
-                    <option value="120">$120K+</option>
-                    <option value="140">$140K+</option>
-                    <option value="160">$160K+</option>
-                    <option value="180">$180K+</option>
-                </select>
-            </div>
+    <header>
+        <div class="header-container">
+            <h1>Melbourne JobDash</h1>
+            <p>Your Real-Time Professional Career Pipeline</p>
         </div>
+    </header>
 
-        <!-- Stats -->
-        <div class="stats-section">
-            <div class="stat-card">
-                <span class="stat-number" id="totalCount">48</span>
-                <span class="stat-label">Total Jobs</span>
-            </div>
-            <div class="stat-card">
-                <span class="stat-number">18</span>
-                <span class="stat-label">Companies</span>
-            </div>
-            <div class="stat-card">
-                <span class="stat-number">$148K</span>
-                <span class="stat-label">Avg Salary</span>
-            </div>
-            <div class="stat-card">
-                <span class="stat-number">Melbourne</span>
-                <span class="stat-label">Location</span>
-            </div>
-        </div>
+    <main class="container">
+        <!-- Add New Job Form -->
+        <section class="form-section">
+            <h2>Track a New Application</h2>
+            <form id="job-form">
+                <input type="text" id="form-role" placeholder="Job Title (e.g., Delivery Lead)" required>
+                <input type="text" id="form-company" placeholder="Company (e.g., Melbourne Corp)" required>
+                <input type="text" id="form-location" placeholder="Location (e.g., Richmond, VIC)" required>
+                <select id="form-status">
+                    <option value="Applied">Applied</option>
+                    <option value="Interviewing">Interviewing</option>
+                    <option value="Offer">Offer</option>
+                    <option value="Rejected">Rejected</option>
+                </select>
+                <button type="submit">Add to Board</button>
+            </form>
+        </section>
 
-        <!-- Jobs Table -->
-        <div class="jobs-section">
-            <div class="jobs-header">
-                <div class="jobs-header-left">
-                    <span class="jobs-count"><span id="jobCount">48</span> of 48 results</span>
-                    <span class="location-badge">🌏 MELBOURNE - VIC</span>
+        <!-- Live Kanban Board -->
+        <section class="board-section">
+            <h2>Live Tracking Board</h2>
+            <div class="kanban-board">
+                <!-- Applied Column -->
+                <div class="kanban-column" id="col-applied">
+                    <div class="column-header h-applied">Applied <span class="badge" id="count-applied">0</span></div>
+                    <div class="card-container" id="list-applied"></div>
                 </div>
-                <div class="sort-section">
-                    <button class="sort-btn active" data-sort="recent">Most Recent</button>
-                    <button class="sort-btn" data-sort="salary-high">Highest Salary</button>
+
+                <!-- Interviewing Column -->
+                <div class="kanban-column" id="col-interviewing">
+                    <div class="column-header h-interviewing">Interviewing <span class="badge" id="count-interviewing">0</span></div>
+                    <div class="card-container" id="list-interviewing"></div>
+                </div>
+
+                <!-- Offer Column -->
+                <div class="kanban-column" id="col-offer">
+                    <div class="column-header h-offer">Offer <span class="badge" id="count-offer">0</span></div>
+                    <div class="card-container" id="list-offer"></div>
+                </div>
+
+                <!-- Rejected Column -->
+                <div class="kanban-column" id="col-rejected">
+                    <div class="column-header h-rejected">Rejected <span class="badge" id="count-rejected">0</span></div>
+                    <div class="card-container" id="list-rejected"></div>
                 </div>
             </div>
+        </section>
+    </main>
 
-            <table class="jobs-table" id="jobsTable">
-                <thead>
-                    <tr>
-                        <th style="width: 20%;">Job Title</th>
-                        <th style="width: 15%;">Company</th>
-                        <th style="width: 12%;">Salary</th>
-                        <th style="width: 12%;">Industry</th>
-                        <th style="width: 12%;">Type</th>
-                        <th style="width: 20%;">Skills</th>
-                        <th style="width: 9%;">Action</th>
-                    </tr>
-                </thead>
-                <tbody id="jobsTableBody">
-                    <!-- Jobs will be inserted here -->
-                </tbody>
-            </table>
-
-            <div id="noResults" class="no-results" style="display: none;">
-                <div class="no-results-title">No jobs found</div>
-                <p>Try adjusting your search or filters</p>
-            </div>
-        </div>
-    </div>
+    <footer>
+        <p>&copy; 2026 Melbourne JobDash. Stored locally via your browser for live persistent tracking.</p>
+    </footer>
 
     <script src="jobs.js"></script>
 </body>
