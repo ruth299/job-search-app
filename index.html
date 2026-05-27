@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Melbourne JobDash - Transformation Jobs</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <div class="live-badge">● LIVE LISTINGS</div>
+                <h1 class="title">TRANSFORMATION<br>JOBS</h1>
+                <p class="subtitle">Melbourne, Victoria — Workday, Cognizant & transformation roles from leading organisations</p>
+            </div>
+        </header>
+
+        <!-- Search Bar -->
+        <div class="search-section">
+            <div class="search-container">
+                <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <path d="m21 21-4.35-4.35"></path>
+                </svg>
+                <input 
+                    type="text" 
+                    id="searchInput" 
+                    placeholder="Search by role, company, skill (e.g. Workday HCM, Change Manager)..."
+                    class="search-input"
+                >
+            </div>
+        </div>
+
+        <!-- Stats -->
+        <div class="stats-section">
+            <div class="stat">
+                <span class="stat-number">48</span>
+                <span class="stat-label">Total Listings</span>
+            </div>
+            <div class="stat">
+                <span class="stat-number">18</span>
+                <span class="stat-label">Companies</span>
+            </div>
+            <div class="stat">
+                <span class="stat-number">$148K</span>
+                <span class="stat-label">Avg. Salary</span>
+            </div>
+        </div>
+
+        <!-- Filters -->
+        <div class="filters-section">
+            <h3 class="filters-title">FILTERS</h3>
+            <div class="filters-container">
+                <div class="filter-group">
+                    <label class="filter-label">Industry</label>
+                    <div class="filter-options">
+                        <label class="filter-checkbox">
+                            <input type="checkbox" value="Finance" class="industry-filter">
+                            <span>Finance</span>
+                        </label>
+                        <label class="filter-checkbox">
+                            <input type="checkbox" value="Tech" class="industry-filter">
+                            <span>Tech</span>
+                        </label>
+                        <label class="filter-checkbox">
+                            <input type="checkbox" value="Consulting" class="industry-filter">
+                            <span>Consulting</span>
+                        </label>
+                        <label class="filter-checkbox">
+                            <input type="checkbox" value="Healthcare" class="industry-filter">
+                            <span>Healthcare</span>
+                        </label>
+                        <label class="filter-checkbox">
+                            <input type="checkbox" value="Government" class="industry-filter">
+                            <span>Government</span>
+                        </label>
+                        <label class="filter-checkbox">
+                            <input type="checkbox" value="Retail" class="industry-filter">
+                            <span>Retail</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="filter-group">
+                    <label class="filter-label">Location</label>
+                    <div class="filter-options">
+                        <label class="filter-checkbox">
+                            <input type="checkbox" value="Melbourne CBD" class="location-filter">
+                            <span>Melbourne CBD</span>
+                        </label>
+                        <label class="filter-checkbox">
+                            <input type="checkbox" value="Full Time" class="work-type-filter">
+                            <span>Full Time</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="filter-group">
+                    <label class="filter-label">Salary Range</label>
+                    <input type="range" min="50" max="300" value="150" class="salary-slider" id="salarySlider">
+                    <span class="salary-display" id="salaryDisplay">$150K+</span>
+                </div>
+            </div>
+
+            <div class="sort-section">
+                <button class="sort-btn active" data-sort="recent">Most Recent</button>
+                <button class="sort-btn" data-sort="salary-high">Salary: High to Low</button>
+            </div>
+        </div>
+
+        <!-- Jobs Listing -->
+        <div class="jobs-section">
+            <div class="jobs-header">
+                <span class="jobs-count"><span id="jobCount">48</span> of 48 jobs</span>
+                <span class="location-badge">🌏 MELBOURNE - VIC</span>
+            </div>
+
+            <div class="jobs-container" id="jobsContainer">
+                <!-- Jobs will be inserted here by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <script src="jobs.js"></script>
+</body>
+</html>
